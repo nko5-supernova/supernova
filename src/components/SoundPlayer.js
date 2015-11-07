@@ -72,7 +72,7 @@ export default class SoundPlayer extends Component {
     const { isLoaded } = this.props.audio;
 
     return (
-      <div>
+      <div style={style.play}>
         <button disabled={!isLoaded } onClick={::this.onTogglePlay}>
           {isLoaded ? "Play!" : "Loading..."}
         </button>
@@ -96,19 +96,9 @@ export default class SoundPlayer extends Component {
   }
 }
 
-/*
-<PlayButton
-  playing={true}
-  onTogglePlay={::this.onTogglePlay}
-  soundCloudAudio={SCAudio}
-/>
-*/
-
-// <PlayButton
-//     className={String}
-//     playing={Boolean}
-//     seeking={Boolean}
-//     seekingIcon={ReactElement}
-//     onTogglePlay={Function}
-//     soundCloudAudio={instanceof SoundCloudAudio}
-// />
+const style = {
+  play:{
+    margin: '0 auto',
+    textAlign: 'center'
+  }
+}

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Card from '../components/Card';
 import * as GameActions from '../actions/game';
 import * as AudioActions from '../actions/audio';
+import * as MoviesActions from '../actions/movies';
 
 class GamePage extends Component {
   static propTypes = {
@@ -40,7 +41,7 @@ class GamePage extends Component {
   }
 
   render() {
-    const { game, audio, audioActions } = this.props;
+    const { game, audio, movies, audioActions, moviesActions } = this.props;
     const currentCard = (game.cards && game.cards[game.currentMatch]);
 
     return (
@@ -49,16 +50,29 @@ class GamePage extends Component {
       {
         currentCard
         &&
+        <div className="card-container" style={style.cardContainer}>
+        </div>
         <Card options={currentCard.options}
           soundtrack={currentCard.soundtrack}
           audio={audio}
           audioActions={audioActions}
+          movies={movies}
+          loadMovies={moviesActions.loadMovies}
           match={game.currentMatch}
           onAnswerCard={::this.onAnswerCard} />
       }
-      <button onClick={::this.onClickLeaveGame}>Leave</button>
+      <button style={style.leave} onClick={::this.onClickLeaveGame}>Leave</button>
     </div>
     );
+  }
+}
+
+const style = {
+  cardContainer: {
+
+  },
+  leave: {
+    display: 'block'
   }
 }
 
@@ -66,7 +80,8 @@ class GamePage extends Component {
 function mapStateToProps(state) {
   return {
     game: state.game,
-    audio: state.audio
+    audio: state.audio,
+    movies: state.movies
   };
 }
 
@@ -74,7 +89,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     gameActions: bindActionCreators(GameActions, dispatch),
-    audioActions: bindActionCreators(AudioActions, dispatch)
+    audioActions: bindActionCreators(AudioActions, dispatch),
+    moviesActions: bindActionCreators(MoviesActions, dispatch),
   }
 }
 
