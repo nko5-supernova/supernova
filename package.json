@@ -4,7 +4,6 @@
   "description": "My module",
   "main": "lib/index.js",
   "license": "MIT",
-  "repository": "chentsulin/counter",
   "scripts": {
     "start": "node server.js",
     "clean": "rimraf lib dist coverage",
@@ -17,7 +16,8 @@
     "preversion": "npm run clean && npm run check",
     "version": "npm run build",
     "postversion": "git push && git push --tags && npm run clean",
-    "prepublish": "npm run clean && npm run build"
+    "prepublish": "npm run clean && npm run build",
+    "postinstall": "node scripts/postinstall.js"
   },
   "author": {
     "name": "C.T. Lin",
