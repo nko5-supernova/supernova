@@ -2,12 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Card from '../components/Card';
-import * as CardActions from '../actions/counter';
+import * as GameActions from '../actions/game';
 
 import SoundPlayer from '../components/SoundPlayer'
 
 class GamePage extends Component {
   static propTypes = {
+    game: PropTypes.object.isRequired,
+    startGame: PropTypes.func.isRequired,
+    answerCard: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
   };
 
@@ -15,15 +18,47 @@ class GamePage extends Component {
     history: PropTypes.object.isRequired,
   };
 
+  componentDidMount() {
+    this.onInitGame(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.onInitGame(nextProps);
+  }
+
+  onInitGame(props) {
+    if (!props.game.isPlaying) {
+      props.startGame();
+      return;
+    }
+
+    if (props.game.isOver) {
+      this.context.history.pushState(null, '/game/over');
+    }
+  }
+
   onClickLeaveGame() {
     this.context.history.pushState(null, '/');
   }
 
+  onAnswerCard(answer) {
+    this.props.answerCard(answer);
+  }
+
   render() {
+    const { game } = this.props;
+    const currentCard = (game.cards && game.cards[game.currentMatch]);
+
     return (
       <div>
         <h1>Guess the movie</h1>
-        <Card />
+        {
+          currentCard
+          &&
+          <Card options={currentCard.options}
+            match={game.currentMatch}
+            onAnswerCard={::this.onAnswerCard} />
+        }
         <SoundPlayer />
         <button onClick={::this.onClickLeaveGame}>Leave</button>
       </div>
@@ -34,13 +69,13 @@ class GamePage extends Component {
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter
+    game: state.game
   };
 }
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CardActions, dispatch);
+  return bindActionCreators(GameActions, dispatch);
 }
 
 
