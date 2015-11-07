@@ -12,7 +12,7 @@ export default class HomePage extends Component {
 
   onClickStartGame(event) {
     event.preventDefault();
-    history.pushState(null, '/game');
+    this.context.history.pushState(null, '/game');
   }
 
   render() {
