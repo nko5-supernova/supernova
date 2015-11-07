@@ -1,13 +1,73 @@
 import React, { Component, Proptypes } from 'react';
 
-const soundcloud = require('../vendor/soundcloud.js');
+// import { PlayButton, Icons } from 'react-soundplayer/components';
+// const { SoundCloudLogoSVG } = Icons;
+
+import SoundCloudAudio from 'soundcloud-audio';
+
+const client_id = "ad83834cb84ee13bbaf65d15f6f7d1a2";
 
 export default class SoundPlayer extends Component {
+  static propTypes = {
+    songURL: React.PropTypes.string.isRequired
+  };
+
+  static defaultProps = {
+    songURL: 'https://soundcloud.com/djangodjango/first-light'
+  };
+
+  state = {
+    isLoaded: false,
+    isPlaying: false
+  }
+
+  scPlayer = SoundCloudAudio(client_id);
+
   componentDidMount() {
-    console.log(soundcloud);
+    this.scPlayer.resolve(this.props.songURL, track => {
+      console.log(track);
+      this.setState({isLoaded: true});
+    });
   }
 
   render () {
-    return <p>Soundcloud</p>
+    const { isLoaded } = this.state;
+
+    return (
+      <div>
+        <button disabled={!isLoaded } onClick={::this.onTogglePlay}>
+          {isLoaded ? "Play!" : "Loading..."}
+        </button>
+      </div>
+    )
+  }
+
+  onTogglePlay() {
+    const { isPlaying } = this.state;
+
+    if(isPlaying) {
+      this.scPlayer.pause();
+    }else {
+      this.scPlayer.play();
+    }
+
+    this.setState({isPlaying: !isPlaying});
   }
 }
+
+/*
+<PlayButton
+  playing={true}
+  onTogglePlay={::this.onTogglePlay}
+  soundCloudAudio={SCAudio}
+/>
+*/
+
+// <PlayButton
+//     className={String}
+//     playing={Boolean}
+//     seeking={Boolean}
+//     seekingIcon={ReactElement}
+//     onTogglePlay={Function}
+//     soundCloudAudio={instanceof SoundCloudAudio}
+// />
