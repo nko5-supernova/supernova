@@ -10,9 +10,8 @@ export default class HomePage extends Component {
     history: PropTypes.object.isRequired,
   };
 
-  onClickStartGame(event) {
-    event.preventDefault();
-    history.pushState(null, '/game');
+  onClickStartGame() {
+    this.context.history.pushState(null, '/game');
   }
 
   render() {
@@ -20,7 +19,7 @@ export default class HomePage extends Component {
       <div>
         <h1>Guess the movie</h1>
         <p>Prove you know the soundtrack of any movie. I dare you!</p>
-        <a href="#" onClick={::this.onClickStartGame}>Start</a>
+        <button onClick={::this.onClickStartGame}>Start</button>
       </div>
     );
   }
