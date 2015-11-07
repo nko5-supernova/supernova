@@ -11,20 +11,16 @@ export default function counter(state = INITIAL_STATE, action) {
       ...state,
       ...action.game,
       currentMatch: 0,
-      isPlaying: true
+      isOver: false
     };
   case ANSWER_CARD:
-    if (state.currentMatch < state.cards.length - 1) {
-      return {
-        ...state,
-        currentMatch: state.currentMatch + 1
-      };
+    if (state.currentMatch === state.cards.length - 1) {
+      return { isOver: true };
     }
 
     return {
       ...state,
-      isPlaying: false,
-      isOver: true
+      currentMatch: state.currentMatch + 1
     };
   default:
     return state;

@@ -18,22 +18,11 @@ class GamePage extends Component {
   };
 
   componentDidMount() {
-    this.onInitGame(this.props);
+    this.props.gameActions.startGame();
   }
 
   componentWillReceiveProps(nextProps) {
-    this.onInitGame(nextProps);
-  }
-
-  onInitGame(props) {
-    if (!props.game.isPlaying) {
-      props.gameActions.startGame();
-      return;
-    }
-
-    if (props.game.isOver) {
-      this.context.history.pushState(null, '/game/over');
-    }
+    this.handleGameEvents(nextProps);
   }
 
   onClickLeaveGame() {
@@ -42,6 +31,12 @@ class GamePage extends Component {
 
   onAnswerCard(answer) {
     this.props.gameActions.answerCard(answer);
+  }
+
+  handleGameEvents(props) {
+    if (props.game.isOver) {
+      this.context.history.pushState(null, '/game/over');
+    }
   }
 
   render() {
