@@ -2,10 +2,14 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Card from '../components/Card';
-import * as CardActions from '../actions/counter';
+import * as GameActions from '../actions/game';
+import * as AudioActions from '../actions/audio';
 
 class GamePage extends Component {
   static propTypes = {
+    audio: PropTypes.object.isRequired,
+    game: PropTypes.object.isRequired,
+    gameActions: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
   };
 
@@ -13,17 +17,51 @@ class GamePage extends Component {
     history: PropTypes.object.isRequired,
   };
 
+  componentDidMount() {
+    this.onInitGame(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.onInitGame(nextProps);
+  }
+
+  onInitGame(props) {
+    if (!props.game.isPlaying) {
+      props.gameActions.startGame();
+      return;
+    }
+
+    if (props.game.isOver) {
+      this.context.history.pushState(null, '/game/over');
+    }
+  }
+
   onClickLeaveGame() {
     this.context.history.pushState(null, '/');
   }
 
+  onAnswerCard(answer) {
+    this.props.gameActions.answerCard(answer);
+  }
+
   render() {
+    const { game, audioActions } = this.props;
+    const currentCard = (game.cards && game.cards[game.currentMatch]);
+
     return (
       <div>
-        <h1>Guess the movie</h1>
-        <Card />
-        <button onClick={::this.onClickLeaveGame}>Leave</button>
-      </div>
+      <h1>Guess the movie</h1>
+      {
+        currentCard
+        &&
+        <Card options={currentCard.options}
+          soundtrack={currentCard.soundtrack}
+          audioActions={audioActions}
+          match={game.currentMatch}
+          onAnswerCard={::this.onAnswerCard} />
+      }
+      <button onClick={::this.onClickLeaveGame}>Leave</button>
+    </div>
     );
   }
 }
@@ -31,13 +69,17 @@ class GamePage extends Component {
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter
+    game: state.game,
+    audio: state.audio
   };
 }
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CardActions, dispatch);
+  return {
+    gameActions: bindActionCreators(GameActions, dispatch),
+    audioActions: bindActionCreators(AudioActions, dispatch)
+  }
 }
 
 

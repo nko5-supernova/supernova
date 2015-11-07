@@ -12,26 +12,21 @@ export default class SoundPlayer extends Component {
     songURL: React.PropTypes.string.isRequired
   };
 
-  static defaultProps = {
-    songURL: 'https://soundcloud.com/djangodjango/first-light'
-  };
-
-  state = {
-    isLoaded: false,
-    isPlaying: false
-  }
-
   scPlayer = SoundCloudAudio(client_id);
 
   componentDidMount() {
-    this.scPlayer.resolve(this.props.songURL, track => {
-      console.log(track);
-      this.setState({isLoaded: true});
-    });
+    // this.scPlayer.resolve(this.props.songURL, track => {
+    //   console.log(track);
+    //   this.setState({isLoaded: true});
+    // });
+  }
+
+  componentWillReceiveProps(props) {
+    console.log(props, this.props);
   }
 
   render () {
-    const { isLoaded } = this.state;
+    const { isLoaded } = false;
 
     return (
       <div>

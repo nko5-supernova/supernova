@@ -1,17 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import SoundPlayer from './SoundPlayer'
 
-export default class Counter extends Component {
+export default class Card extends Component {
+  static propTypes = {
+    match: PropTypes.number.isRequired,
+    options: PropTypes.array.isRequired,
+    soundtrack: PropTypes.string.isRequired,
+    onAnswerCard: PropTypes.func.isRequired
+  };
+
   render() {
+    const { soundtrack, options, match, onAnswerCard, audioActions } = this.props;
+
     return (
       <div>
-        <SoundPlayer />
+        <h3>Match {match + 1}</h3>
+        <SoundPlayer songURL={soundtrack}/>
         <ul>
-          <li>Movie 1</li>
-          <li>Movie 2</li>
-          <li>Movie 3</li>
-          <li>Movie 4</li>
+          {
+            options.map(({ movie }, index) => <li key={movie}>
+              <input type="radio" name="movie" id={movie} onChange={() => onAnswerCard(index)} />
+              <label htmlFor={movie}>{movie}</label>
+            </li>)
+          }
         </ul>
       </div>
     );

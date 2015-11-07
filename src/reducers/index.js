@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
-import counter from './counter';
+import game from './game';
+import audio from './audio';
 
 
 const rootReducer = combineReducers({
-  counter
+  game,
+  audio
 });
 
 
