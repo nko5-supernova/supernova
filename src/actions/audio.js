@@ -4,7 +4,7 @@ export const PLAY = 'START_PLAY';
 export const PAUSE = 'PAUSE_PLAY';
 export const RESUME = 'RESUME_PLAY';
 
-export function loadAudio(url) {
+export function loadingAudio(url) {
   return { type: LOAD_AUDIO, url };
 }
 

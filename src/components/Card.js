@@ -11,12 +11,12 @@ export default class Card extends Component {
   };
 
   render() {
-    const { soundtrack, options, match, onAnswerCard, audioActions } = this.props;
+    const { soundtrack, options, match, onAnswerCard, audioActions, audio } = this.props;
 
     return (
       <div>
         <h3>Match {match + 1}</h3>
-        <SoundPlayer songURL={soundtrack}/>
+        <SoundPlayer songURL={soundtrack} audioActions={audioActions} audio={audio}/>
         <ul>
           {
             options.map(({ movie }, index) => <li key={movie}>

@@ -40,7 +40,7 @@ class GamePage extends Component {
   }
 
   render() {
-    const { game, audioActions } = this.props;
+    const { game, audio, audioActions } = this.props;
     const currentCard = (game.cards && game.cards[game.currentMatch]);
 
     return (
@@ -51,6 +51,7 @@ class GamePage extends Component {
         &&
         <Card options={currentCard.options}
           soundtrack={currentCard.soundtrack}
+          audio={audio}
           audioActions={audioActions}
           match={game.currentMatch}
           onAnswerCard={::this.onAnswerCard} />
