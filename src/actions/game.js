@@ -11,37 +11,37 @@ export function startGame() {
           {
             soundtrack: 'https://soundcloud.com/tfrady/harry-potter-soundtrack-hedwigs-theme',
             options: [
-              { movie: 'Movie 1.1', isCorrect: false },
-              { movie: 'Movie 1.2', isCorrect: false },
-              { movie: 'Movie 1.3', isCorrect: true },
-              { movie: 'Movie 1.4', isCorrect: false }
+              { movie: 'tt3659388', isCorrect: false }, //The Martian
+              { movie: 'tt0241527', isCorrect: true }, //Harry Potter
+              { movie: 'tt0120737', isCorrect: false }, //Lord of the Rings
+              { movie: 'tt0363771', isCorrect: false } //Narnia
             ]
           },
           {
             soundtrack: 'https://soundcloud.com/alexpfeffer/the-godfather-love-theme-feat',
             options: [
-              { movie: 'Movie 2.1', isCorrect: false },
-              { movie: 'Movie 2.2', isCorrect: false },
-              { movie: 'Movie 2.3', isCorrect: true },
-              { movie: 'Movie 2.4', isCorrect: false }
+              { movie: 'tt0099685', isCorrect: false },
+              { movie: 'tt0111161', isCorrect: false },
+              { movie: 'tt0068646', isCorrect: true }, //The godfather
+              { movie: 'tt0110912', isCorrect: false }
             ]
           },
           {
             soundtrack: 'https://soundcloud.com/championdnb/true-survivor-champion',
             options: [
-              { movie: 'Movie 3.1', isCorrect: false },
-              { movie: 'Movie 3.2', isCorrect: false },
-              { movie: 'Movie 3.3', isCorrect: true },
-              { movie: 'Movie 3.4', isCorrect: false }
+              { movie: 'tt0090728', isCorrect: false },
+              { movie: 'tt3416742', isCorrect: false },
+              { movie: 'tt3472226', isCorrect: true },
+              { movie: 'tt1807165', isCorrect: false }
             ]
           },
           {
             soundtrack: 'https://soundcloud.com/hollywoodrecpromo/idina-menzel-let-it-go-from',
             options: [
-              { movie: 'Movie 4.1', isCorrect: false },
-              { movie: 'Movie 4.2', isCorrect: false },
-              { movie: 'Movie 4.3', isCorrect: true },
-              { movie: 'Movie 4.4', isCorrect: false }
+              { movie: 'tt1772341', isCorrect: false },
+              { movie: 'tt1217209', isCorrect: false },
+              { movie: 'tt2294629', isCorrect: true },
+              { movie: 'tt0398286', isCorrect: false }
             ]
           },
         ]
