@@ -1,27 +1,6 @@
-## Quick Start
+## Boilerplate
 
-~~~sh
-# getting the code
-git clone git@github.com:nko5/supernova.git && cd ./supernova/
-
-# developing
-npm install
-npm start
-
-# setup your modulus account
-npm install -g modulus
-modulus login
-
-# deploying to Modulus (to http://supernova.2015.nodeknockout.com/)
-modulus deploy
-
-# view the most recent logs from modulus
-modulus project logs
-~~~
-
-Read more about this setup [on our blog][deploying-nko].
-
-[deploying-nko]: http://www.nodeknockout.com/deploying
+Starting boilerplate for React, Redux, Webpack and Babel from https://github.com/chentsulin/redux-boilerplate
 
 ### Vote KO Widget
 
