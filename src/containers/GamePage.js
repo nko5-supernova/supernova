@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import Card from '../components/Card';
 import * as CardActions from '../actions/counter';
 
-import SoundPlayer from '../components/SoundPlayer'
-
 class GamePage extends Component {
   static propTypes = {
     history: PropTypes.object.isRequired,
@@ -24,7 +22,6 @@ class GamePage extends Component {
       <div>
         <h1>Guess the movie</h1>
         <Card />
-        <SoundPlayer />
         <button onClick={::this.onClickLeaveGame}>Leave</button>
       </div>
     );

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
+import SoundPlayer from './SoundPlayer'
 
 export default class Counter extends Component {
   render() {
     return (
       <div>
-        <button>Play</button>
+        <SoundPlayer />
         <ul>
           <li>Movie 1</li>
           <li>Movie 2</li>
