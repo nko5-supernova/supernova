@@ -51,15 +51,16 @@ class GamePage extends Component {
         currentCard
         &&
         <div className="card-container" style={style.cardContainer}>
+          <Card options={currentCard.options}
+            soundtrack={currentCard.soundtrack}
+            audio={audio}
+            audioActions={audioActions}
+            movies={movies}
+            loadMovies={moviesActions.loadMovies}
+            match={game.currentMatch}
+            onAnswerCard={::this.onAnswerCard} />
         </div>
-        <Card options={currentCard.options}
-          soundtrack={currentCard.soundtrack}
-          audio={audio}
-          audioActions={audioActions}
-          movies={movies}
-          loadMovies={moviesActions.loadMovies}
-          match={game.currentMatch}
-          onAnswerCard={::this.onAnswerCard} />
+
       }
       <button style={style.leave} onClick={::this.onClickLeaveGame}>Leave</button>
     </div>
@@ -69,7 +70,7 @@ class GamePage extends Component {
 
 const style = {
   cardContainer: {
-
+    // overflow: 'auto'
   },
   leave: {
     display: 'block'
