@@ -16,7 +16,13 @@ export default class SoundPlayer extends Component {
   scPlayer = SoundCloudAudio(client_id);
 
   componentDidMount() {
-    this.loadSong(this.props.songURL);
+    const {audioActions, songURL} = this.props;
+
+    this.loadSong(songURL);
+
+    this.scPlayer.on('canplay', () => {
+      audioActions.ready();
+    })
   }
 
   componentWillReceiveProps(props) {
@@ -39,7 +45,7 @@ export default class SoundPlayer extends Component {
     audioActions.loadingAudio(songURL);
 
     this.scPlayer.resolve(songURL, track => {
-      audioActions.ready();
+      this.scPlayer.preload(track.stream_url);
     });
   }
 
