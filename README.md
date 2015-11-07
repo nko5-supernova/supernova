@@ -17,6 +17,10 @@ including it in your site:
 ## Development
 ```shell
 npm install
+# set the configuration for your mongodb, for example:
+export MONGO_PORT=tcp://10.10.10.10:27017
+export MONGO_DATABASE=game-service
+npm start
 ```
 
 ## Deploy

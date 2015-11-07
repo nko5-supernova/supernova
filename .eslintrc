@@ -2,7 +2,8 @@
   "extends": "airbnb",
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "mocha": true
   },
   "rules": {
     "react/jsx-uses-react": 2,
@@ -15,6 +16,7 @@
     "comma-dangle": 0,
     
     "func-names": 0,
+    "new-cap": 0,
   },
   "plugins": [
     "react"
