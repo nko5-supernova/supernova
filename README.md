@@ -24,6 +24,7 @@ npm install
 Deploying to Modulus (to http://supernova.2015.nodeknockout.com/)
 
 ```shell
+npm run build
 npm run modulus-login
 npm run modulus-deploy
 ```
