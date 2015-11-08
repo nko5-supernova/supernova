@@ -14,7 +14,30 @@ including it in your site:
 </iframe>
 ~~~
 
-## Have fun!
+## Development
+```shell
+npm install
+# set the configuration for your mongodb, for example:
+export MONGO_PORT=tcp://10.10.10.10:27017
+export MONGO_DATABASE=game-service
+npm start
+```
 
-If you have any issues, we're on IRC in #nodeknockout on freenode, email us at
-<help@nodeknockout.com>, or tweet [@nodeknockout](https://twitter.com/nodeknockout).
+## Deploy
+
+Deploying to Modulus (to http://supernova.2015.nodeknockout.com/)
+
+```shell
+npm run build
+npm run modulus-login
+npm run modulus-deploy
+```
+
+## Logs
+
+View the most recent logs from modulus
+
+```shell
+npm run modulus-login
+npm run modulus-logs
+```

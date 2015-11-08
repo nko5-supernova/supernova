@@ -1,6 +1,7 @@
 {
     "stage": 0,
     "loose": "all",
+		"optional": ["runtime"],
     "env": {
         "development": {
             "plugins": ["react-transform"],
