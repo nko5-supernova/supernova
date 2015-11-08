@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Alfa+Slab+One|Gentium+Book+Basic);
 
+html,body { height:100%; }
 body {
 	background: #2E334A;
 	font: 13px 'Muli', sans-serif;
@@ -64,5 +65,27 @@ body {
 
 	.message {
 		margin: 1em 0;
+	}
+
+	.content-app {
+		padding-bottom: 55px;
+	}
+	
+	footer {
+		position: absolute;
+    bottom: 0;
+    width: 100%;
+		padding: 25 0 0 0.5em;
+		
+		img, iframe {
+			vertical-align: middle;
+		}
+		
+		.thanks {
+			margin-top: 1em;
+			img { margin: 0 1em; }
+			
+			.themoviedb { max-height: 20px; }
+		}
 	}
 }
