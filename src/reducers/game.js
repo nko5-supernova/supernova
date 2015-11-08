@@ -13,10 +13,7 @@ const INITIAL_STATE = {};
 export default function counter(state = INITIAL_STATE, action) {
   switch (action.type) {
   case START_GAME_REQUEST:
-    return {
-      ...state,
-      status: 'starting'
-    };
+    return { status: 'starting' };
   case START_GAME_SUCCESS:
     return {
       ...state,
@@ -31,7 +28,7 @@ export default function counter(state = INITIAL_STATE, action) {
     return {...state, checkingAnswer: false, correctAnswer: action.correctAnswer};
   case NEXT_CARD:
     if (state.currentMatch === state.questions.length - 1) {
-      return { status: 'finished' };
+      return {...state, status: 'finished' };
     }
 
     return {...state,
