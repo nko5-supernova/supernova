@@ -10,7 +10,7 @@ export function loadMovies(moviesIds) {
       .then(response => response.json())
     ))
     .then(movies => {
-      dispatch({ type: LOAD_MOVIES_SUCCESS, movies })
-    })
-  }
+      dispatch({ type: LOAD_MOVIES_SUCCESS, movies });
+    });
+  };
 }

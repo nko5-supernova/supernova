@@ -1,0 +1,20 @@
+.match-container {
+
+  .content-wrappper {
+    display: block;
+  }
+
+  .loading-wrapper {
+    display: none;
+  }
+
+  &.loading {
+    .loading-wrapper {
+      display: block;
+    }
+
+    .content-wrappper {
+      display: none;
+    }
+  }
+}

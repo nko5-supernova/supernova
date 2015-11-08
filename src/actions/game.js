@@ -1,7 +1,6 @@
 export const START_GAME = 'START_GAME';
 export const ANSWER_CARD = 'ANSWER_CARD';
 
-
 export function startGame() {
   return (dispatch) => {
     dispatch({
@@ -11,10 +10,10 @@ export function startGame() {
           {
             soundtrack: 'https://soundcloud.com/tfrady/harry-potter-soundtrack-hedwigs-theme',
             options: [
-              { movie: 'tt3659388', isCorrect: false }, //The Martian
-              { movie: 'tt0241527', isCorrect: true }, //Harry Potter
-              { movie: 'tt0120737', isCorrect: false }, //Lord of the Rings
-              { movie: 'tt0363771', isCorrect: false } //Narnia
+              { movie: 'tt3659388', isCorrect: false }, // The Martian
+              { movie: 'tt0241527', isCorrect: true }, // Harry Potter
+              { movie: 'tt0120737', isCorrect: false }, // Lord of the Rings
+              { movie: 'tt0363771', isCorrect: false } // Narnia
             ]
           },
           {
@@ -22,7 +21,7 @@ export function startGame() {
             options: [
               { movie: 'tt0099685', isCorrect: false },
               { movie: 'tt0111161', isCorrect: false },
-              { movie: 'tt0068646', isCorrect: true }, //The godfather
+              { movie: 'tt0068646', isCorrect: true }, // The godfather
               { movie: 'tt0110912', isCorrect: false }
             ]
           },
