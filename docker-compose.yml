@@ -11,5 +11,6 @@ test:
     - .:/usr/src/app
   environment:
     MONGO_DATABASE: game-service-test
+    THEMOVIEDB_API_KEY: # get env with same name from host
   links:
     - mongo:mongo

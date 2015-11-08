@@ -9,10 +9,10 @@ const schema = mongoose.Schema({
   questions: [{
     soundtrack: { type: String, required: true },
     answered: { type: Number },
-    answeredCorrect: { type: Number },
+    correctAnswer: { type: Number, required: true },
     options: [{
-      movie: { type: String, required: true },
-      isCorrect: { type: Boolean, required: true }
+      cover: { type: String, required: true },
+      title: { type: String, required: true },
     }]
   }]
 });

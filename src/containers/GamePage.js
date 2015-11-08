@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Card from '../components/Card';
 import * as GameActions from '../actions/game';
 import * as AudioActions from '../actions/audio';
-import * as MoviesActions from '../actions/movies';
 import * as TurnActions from '../actions/turn';
 
 const style = {
@@ -20,12 +19,10 @@ const style = {
 class GamePage extends Component {
   static propTypes = {
     audio: PropTypes.object.isRequired,
-    movies: PropTypes.object.isRequired,
     game: PropTypes.object.isRequired,
     turn: PropTypes.object.isRequired,
     audioActions: PropTypes.object.isRequired,
     gameActions: PropTypes.object.isRequired,
-    moviesActions: PropTypes.object.isRequired,
     turnActions: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
   };
@@ -59,12 +56,7 @@ class GamePage extends Component {
   }
 
   render() {
-    const { game,
-      turn, turnActions,
-      audio, audioActions,
-      movies, moviesActions
-    } = this.props;
-
+    const { game, turn, turnActions, audio, audioActions } = this.props;
     const currentCard = (game.questions && game.questions[game.currentMatch]);
 
     return (
@@ -81,8 +73,6 @@ class GamePage extends Component {
             soundtrack={currentCard.soundtrack}
             audio={audio}
             audioActions={audioActions}
-            movies={movies}
-            loadMovies={moviesActions.loadMovies}
             match={game.currentMatch}
             onAnswerCard={::this.onAnswerCard} />
         </div>
@@ -94,11 +84,11 @@ class GamePage extends Component {
   }
 }
 
+
 function mapStateToProps(state) {
   return {
     game: state.game,
     audio: state.audio,
-    movies: state.movies,
     turn: state.turn
   };
 }
@@ -108,7 +98,6 @@ function mapDispatchToProps(dispatch) {
   return {
     gameActions: bindActionCreators(GameActions, dispatch),
     audioActions: bindActionCreators(AudioActions, dispatch),
-    moviesActions: bindActionCreators(MoviesActions, dispatch),
     turnActions: bindActionCreators(TurnActions, dispatch)
   };
 }
