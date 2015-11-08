@@ -27,10 +27,16 @@ module.exports = {
     extensions: ['', '.js']
   },
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      exclude: /node_modules/
-    }]
+    loaders: [
+      {
+        test: /\.js$/,
+        loaders: ['babel'],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.scss$/,
+        loader: 'style!css!sass'
+      }
+    ]
   }
 };
