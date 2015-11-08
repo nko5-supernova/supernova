@@ -40,6 +40,7 @@ class LeaderboardPage extends Component {
           <thead>
             <tr>
               <th>Username</th>
+              <th>Games</th>
               <th>Points</th>
             </tr>
           </thead>
@@ -48,6 +49,7 @@ class LeaderboardPage extends Component {
             items.map(rank => (
               <tr key={rank.username}>
                 <td>{rank.username}</td>
+                <td>{rank.games}</td>
                 <td>{rank.points}</td>
               </tr>
             ))

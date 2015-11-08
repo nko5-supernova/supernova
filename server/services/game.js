@@ -81,6 +81,7 @@ export async function leaderboard() {
     {
       $group: {
         _id: '$username',
+        games: { $sum: 1 },
         points: { $sum: '$points' }
       }
     },
@@ -89,5 +90,5 @@ export async function leaderboard() {
     }
   ]).exec();
 
-  return data.map(item => ({ username: item._id, points: item.points }));
+  return data.map(item => ({ username: item._id, games: item.games, points: item.points }));
 }
