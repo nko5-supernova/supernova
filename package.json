@@ -16,7 +16,8 @@
     "modulus-logs": "modulus project logs tail -p \"NKO2015 supernova\""
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": "0.12.7",
+    "npm": "2.12.1"
   },
   "keywords": [
     "redux",
