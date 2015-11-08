@@ -47,6 +47,20 @@ describe('game-answer', function() {
           });
         });
       });
+
+      it('should receive the correct answer', function(done) {
+        request(app)
+          .post(`/api/game/${currentGame._id}/answer`)
+          .expect(200)
+          .send({ answer: 1 })
+          .end((err, res) => {
+            if (err) { return done(err); }
+
+            expect(res.body).to.have.property('correctAnswer', 1);
+
+            done();
+          });
+      });
     });
   });
 });
