@@ -59,7 +59,7 @@ export async function answer(id, data) {
   const currentQuestion = game.questions[currentQuestionIndex];
 
   if (data.answer === currentQuestion.correctAnswer) {
-    game.points += 10;
+    game.points += ((data.fraction || 0) * 10);
   }
 
   if (currentQuestionIndex === game.questions.length - 1) {
@@ -81,6 +81,7 @@ export async function leaderboard() {
     {
       $group: {
         _id: '$username',
+        games: { $sum: 1 },
         points: { $sum: '$points' }
       }
     },
@@ -89,5 +90,5 @@ export async function leaderboard() {
     }
   ]).exec();
 
-  return data.map(item => ({ username: item._id, points: item.points }));
+  return data.map(item => ({ username: item._id, games: item.games, points: item.points }));
 }
