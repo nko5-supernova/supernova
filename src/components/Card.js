@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 
 import SoundPlayer from './SoundPlayer';
-
+import Score from './Score';
 
 const style = {
   list: {
@@ -68,6 +68,8 @@ export default class Card extends Component {
       'loading': !turn.canStart
     };
 
+    const timeFraction = 1 - (audio.currentTime / audio.duration);
+
     return (
       <div className={classNames(classes)}>
         <h3>Match {match + 1}</h3>
@@ -75,6 +77,7 @@ export default class Card extends Component {
           <p>Loading Movies...</p>
         </div>
         <div className="content-wrappper">
+          <Score fraction={timeFraction} maxPoints={10}/>
           <SoundPlayer songURL={soundtrack} audioActions={audioActions} audio={audio}/>
           <ul style={style.list}>
             {

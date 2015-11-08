@@ -11,6 +11,7 @@ const style = {
   }
 };
 
+let tracker = null;
 
 export default class SoundPlayer extends Component {
   static propTypes = {
@@ -25,8 +26,10 @@ export default class SoundPlayer extends Component {
     this.loadSong(songURL);
 
     this.scPlayer.on('canplay', () => {
-      audioActions.ready();
+      audioActions.ready(this.scPlayer.duration);
     });
+
+    tracker = setInterval(() => audioActions.setCurrentTime(this.scPlayer.audio.currentTime), 200);
   }
 
   componentWillReceiveProps(props) {
@@ -41,6 +44,7 @@ export default class SoundPlayer extends Component {
 
   componentWillUnmount() {
     this.unloadSong();
+    clearInterval(tracker);
   }
 
   loadSong(songURL) {
@@ -59,43 +63,42 @@ export default class SoundPlayer extends Component {
   }
 
   handlePlayback(props) {
-    if (!props.audio.isLoaded) {
+    const { audio } = props;
+
+    if (!audio.isLoaded) {
       this.scPlayer.pause();
     }
 
-    if (props.audio.isPlaying && !props.audio.isPaused) {
+    if (audio.isPlaying && !audio.isPaused) {
       this.scPlayer.play();
     }
 
-    if (props.audio.isPaused) {
+    if (audio.isPaused) {
       this.scPlayer.pause();
     }
+
+    this.scPlayer.audio.muted = audio.isMuted;
   }
 
   render() {
-    const { isLoaded } = this.props.audio;
+    const { isLoaded, isMuted } = this.props.audio;
 
     return (
       <div style={style.play}>
-        <button disabled={!isLoaded } onClick={::this.onTogglePlay}>
-          {isLoaded ? 'Play!' : 'Loading...'}
+        <button disabled={!isLoaded } onClick={::this.onToggleMute}>
+          {isMuted ? 'Unmute' : 'Mute'}
         </button>
       </div>
     );
   }
 
-  onTogglePlay() {
+  onToggleMute() {
     const {audioActions, audio} = this.props;
 
-    if (!audio.isPlaying) {
-      audioActions.startPlaying();
-      return;
-    }
-
-    if (audio.isPaused) {
-      audioActions.resumePlaying();
-    } else {
-      audioActions.pausePlaying();
+    if (audio.isMuted) {
+      audioActions.unmute();
+    }else {
+      audioActions.mute();
     }
   }
 
