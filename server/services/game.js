@@ -1,6 +1,7 @@
 import { shuffle } from 'lodash';
 import { Game, Movie } from '../models';
 import { theMovieDBClient } from '../clients';
+import { getRandomItems } from '../utils';
 
 
 const AMOUNT_QUESTIONS_PER_GAME = 5;
@@ -65,13 +66,4 @@ export async function answer(id, data) {
 
 export function find() {
   return Game.find().exec();
-}
-
-
-function getRandomItems(items, amount) {
-  const result = [];
-  for (let idx = 0; idx < amount; idx++) {
-    result.push(items[Math.floor(Math.random() * items.length)]);
-  }
-  return result;
 }
