@@ -32,7 +32,7 @@ class GamePage extends Component {
   };
 
   componentDidMount() {
-    this.props.gameActions.startGame();
+    this.handleGameEvents(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -56,7 +56,7 @@ class GamePage extends Component {
   }
 
   handleGameEvents(props) {
-    if (props.game.isOver) {
+    if (props.game.status === 'finished') {
       this.context.history.pushState(null, '/game/over');
     }
   }
