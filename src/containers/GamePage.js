@@ -65,7 +65,7 @@ class GamePage extends Component {
       movies, moviesActions
     } = this.props;
 
-    const currentCard = (game.cards && game.cards[game.currentMatch]);
+    const currentCard = (game.questions && game.questions[game.currentMatch]);
 
     return (
       <div>
