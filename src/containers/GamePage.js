@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Card from '../components/Card';
 import * as GameActions from '../actions/game';
 import * as AudioActions from '../actions/audio';
-import * as TurnActions from '../actions/turn';
 
 const style = {
   cardContainer: {
@@ -20,10 +19,8 @@ class GamePage extends Component {
   static propTypes = {
     audio: PropTypes.object.isRequired,
     game: PropTypes.object.isRequired,
-    turn: PropTypes.object.isRequired,
     audioActions: PropTypes.object.isRequired,
     gameActions: PropTypes.object.isRequired,
-    turnActions: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
   };
 
@@ -46,7 +43,7 @@ class GamePage extends Component {
   onAnswerCard(answer) {
     this.props.gameActions.answerCard(answer);
 
-    setTimeout(() => this.props.turnActions.finishTurn(), 2000);
+    setTimeout(() => this.props.gameActions.nextCard(), 2000);
   }
 
   handleGameEvents(props) {
@@ -56,7 +53,7 @@ class GamePage extends Component {
   }
 
   render() {
-    const { game, turn, turnActions, audio, audioActions } = this.props;
+    const { game, audio, audioActions } = this.props;
     const currentCard = (game.questions && game.questions[game.currentMatch]);
 
     return (
@@ -67,8 +64,6 @@ class GamePage extends Component {
         &&
         <div className="card-container" style={style.cardContainer}>
           <Card
-            turn={turn}
-            turnActions={turnActions}
             options={currentCard.options}
             soundtrack={currentCard.soundtrack}
             audio={audio}
@@ -97,8 +92,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     gameActions: bindActionCreators(GameActions, dispatch),
-    audioActions: bindActionCreators(AudioActions, dispatch),
-    turnActions: bindActionCreators(TurnActions, dispatch)
+    audioActions: bindActionCreators(AudioActions, dispatch)
   };
 }
 

@@ -31,29 +31,23 @@ export default class Card extends Component {
     soundtrack: PropTypes.string.isRequired,
     onAnswerCard: PropTypes.func.isRequired,
     audioActions: PropTypes.object.isRequired,
-    turnActions: PropTypes.object.isRequired,
-    audio: PropTypes.object.isRequired,
-    turn: PropTypes.object.isRequired,
+    audio: PropTypes.object.isRequired
   };
 
   componentWillReceiveProps(props) {
-    const {turn, turnActions, audio, audioActions} = props;
+    const {audio, audioActions} = props;
 
-    if (turn.canStart && !turn.didStart) {
-      turnActions.startTurn();
-    }
-
-    if (turn.didStart && !audio.isPlaying) {
+    if (audio.isLoaded && !audio.isPlaying) {
       audioActions.startPlaying();
     }
   }
 
   render() {
-    const { match, onAnswerCard, soundtrack, audioActions, audio, turn, options } = this.props;
+    const { match, onAnswerCard, soundtrack, audioActions, audio, options} = this.props;
 
     const classes = {
       'match-container': true,
-      'loading': !turn.canStart
+      'loading': !audio.isLoaded
     };
 
     const timeFraction = 1 - (audio.currentTime / audio.duration);

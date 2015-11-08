@@ -6,6 +6,12 @@ export const ANSWER_CARD_REQUEST = 'ANSWER_CARD_REQUEST';
 export const ANSWER_CARD_SUCCESS = 'ANSWER_CARD_SUCCESS';
 export const ANSWER_CARD_FAILURE = 'ANSWER_CARD_FAILURE';
 
+export const NEXT_CARD = 'NEXT_CARD';
+
+export function nextCard() {
+  return { type: NEXT_CARD };
+}
+
 export function startGame(username) {
   return async dispatch => {
     try {
