@@ -23,12 +23,29 @@ const MOVIES = [
   { imdbId: 'tt2322441', soundtrack: 'https://soundcloud.com/kiana/love-me-like-you-do-from-fifty-shades-of-grey-ellie-goulding-cover' },
   { imdbId: 'tt2582846', soundtrack: 'https://soundcloud.com/garima_22/charli-xcx-boom-clap-ost-the-fault-in-our-stars' },
   { imdbId: 'tt0055928', soundtrack: 'https://soundcloud.com/imro69/james-bond-theme' },
+  { imdbId: 'tt0092890', soundtrack: 'https://soundcloud.com/hollywoodpantages/ive-had-the-time-of-my-life-dirty-dancing' },
+  { imdbId: 'tt0099487', soundtrack: 'https://soundcloud.com/lucas-king-piano-music/edward-scissorhands-ice-dance' },
+  { imdbId: 'tt0265086', soundtrack: 'https://soundcloud.com/koramar/black-hawk-down-2001-ashes-to-ashes-soundtrack-ost' },
+  { imdbId: 'tt0780504', soundtrack: 'https://soundcloud.com/5471m/a-real-hero-drive-soundtrack' },
+  { imdbId: 'tt0133093', soundtrack: 'https://soundcloud.com/martin-bazalgette/m-s-d-o-claire-matrix' },
+  { imdbId: 'tt1010048', soundtrack: 'https://soundcloud.com/l-made-semdi/sets/slumdog-milionaire-ost-jai-ho' },
+  { imdbId: 'tt0266697', soundtrack: 'https://soundcloud.com/reem-3aziz/kill-bill-soundtrack-the' },
   { imdbId: 'tt0107290', soundtrack: 'https://soundcloud.com/revanth-prasad/jurassic-park-theme-song' },
   { imdbId: 'tt0087332', soundtrack: 'https://soundcloud.com/fororchestra/ghostbusters-theme-song-for' },
   { imdbId: 'tt0120338', soundtrack: 'https://soundcloud.com/suja-1/titanic-song-with-lyrics' },
   { imdbId: 'tt0463985', soundtrack: 'https://soundcloud.com/mohamad-da-1/fast-and-furious-3-tokyo-drift' },
   { imdbId: 'tt0211915', soundtrack: 'https://soundcloud.com/giorgio-iannelli/yann_tiersen-amelie_piano_version' },
-  { imdbId: 'tt1951265', soundtrack: 'https://soundcloud.com/starwarspunk/the-hanging-tree-from-the-hunger-games-mockingjay-piano-cover-by-dani' }
+  { imdbId: 'tt1951265', soundtrack: 'https://soundcloud.com/starwarspunk/the-hanging-tree-from-the-hunger-games-mockingjay-piano-cover-by-dani' },
+  { imdbId: 'tt0137523', soundtrack: 'https://soundcloud.com/whitewives/where-is-my-mind-the-pixies' },
+  { imdbId: 'tt0118971', soundtrack: 'https://soundcloud.com/slymnoncul/rolling-stones-paint-it-black' },
+  { imdbId: 'tt0365830', soundtrack: 'https://soundcloud.com/kemeron-oliveira/tenacious-d-kickapoo-hq' },
+  { imdbId: 'tt0120737', soundtrack: 'https://soundcloud.com/jorge-soares-8/lord-of-the-rings-medley' },
+  { imdbId: 'tt1170358', soundtrack: 'https://soundcloud.com/edsheeran/i-see-fire' },
+  { imdbId: 'tt0082158', soundtrack: 'https://soundcloud.com/kliktyklik/vangelis-chariots-of-fire-1' },
+  { imdbId: 'tt0078346', soundtrack: 'https://soundcloud.com/vituccio-1/superman-theme' },
+  { imdbId: 'tt0088763', soundtrack: 'https://soundcloud.com/bstrgg/back-to-the-future-theme-song' },
+  { imdbId: 'tt0073195', soundtrack: 'https://soundcloud.com/aamandacarp/jaws-theme-song' },
+  { imdbId: 'tt0083866', soundtrack: 'https://soundcloud.com/boston-pops/flying-theme' }
 ];
 
 /*
