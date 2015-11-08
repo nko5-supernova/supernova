@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
+import classNames from 'classnames';
+
 import Card from '../components/Card';
 import * as GameActions from '../actions/game';
 import * as AudioActions from '../actions/audio';
@@ -34,6 +37,10 @@ class GamePage extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.handleGameEvents(nextProps);
+
+    if (this.props.game.correctAnswer === -1 && nextProps.game.correctAnswer !== -1) {
+      setTimeout(() => this.props.gameActions.nextCard(), 2000);
+    }
   }
 
   onClickLeaveGame() {
@@ -41,9 +48,11 @@ class GamePage extends Component {
   }
 
   onAnswerCard(answer) {
-    this.props.gameActions.answerCard(answer);
+    const { game } = this.props;
 
-    setTimeout(() => this.props.gameActions.nextCard(), 2000);
+    if (game.correctAnswer === -1) {
+      this.props.gameActions.answerCard(answer);
+    }
   }
 
   handleGameEvents(props) {
@@ -56,8 +65,13 @@ class GamePage extends Component {
     const { game, audio, audioActions } = this.props;
     const currentCard = (game.questions && game.questions[game.currentMatch]);
 
+    const classes = classNames({
+      'game-page': true,
+      'checking-answer': game.checkingAnswer
+    });
+
     return (
-      <div>
+      <div className={classes}>
       <h1>Guess the movie</h1>
       {
         currentCard
@@ -69,9 +83,12 @@ class GamePage extends Component {
             audio={audio}
             audioActions={audioActions}
             match={game.currentMatch}
+            correctAnswer={game.correctAnswer}
             onAnswerCard={::this.onAnswerCard} />
+            <div className="loading-modal">
+              <p>Checking answers...</p>
+            </div>
         </div>
-
       }
       <button style={style.leave} onClick={::this.onClickLeaveGame}>Leave</button>
     </div>
@@ -79,12 +96,12 @@ class GamePage extends Component {
   }
 }
 
+require('./gamePage.scss');
 
 function mapStateToProps(state) {
   return {
     game: state.game,
-    audio: state.audio,
-    turn: state.turn
+    audio: state.audio
   };
 }
 

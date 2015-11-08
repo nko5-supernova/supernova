@@ -1,0 +1,22 @@
+.game-page {
+  .card-container {
+    display: block;
+    position: relative;
+
+    .loading-modal {
+      display: none;
+      position: absolute;
+      background-color: rgba(0,0,0,0.75);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  &.checking-answer {
+    .loading-modal {
+      display: block;
+    }
+  }
+}

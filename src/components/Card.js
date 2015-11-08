@@ -30,6 +30,7 @@ export default class Card extends Component {
     options: PropTypes.array.isRequired,
     soundtrack: PropTypes.string.isRequired,
     onAnswerCard: PropTypes.func.isRequired,
+    correctAnswer: PropTypes.number.isRequired,
     audioActions: PropTypes.object.isRequired,
     audio: PropTypes.object.isRequired
   };
@@ -43,11 +44,12 @@ export default class Card extends Component {
   }
 
   render() {
-    const { match, onAnswerCard, soundtrack, audioActions, audio, options} = this.props;
+    const { match, onAnswerCard, soundtrack, audioActions, audio, options, correctAnswer} = this.props;
 
     const classes = {
       'match-container': true,
-      'loading': !audio.isLoaded
+      'loading': !audio.isLoaded,
+      'showing-answer': correctAnswer !== -1
     };
 
     const timeFraction = 1 - (audio.currentTime / audio.duration);
@@ -64,7 +66,7 @@ export default class Card extends Component {
           <ul style={style.list}>
             {
               options.map(( movie, index) =>
-                  <li style={style.listItem} key={index} onClick={() => onAnswerCard(index)}>
+                  <li className={classNames({'correct-answer': correctAnswer === index })} style={style.listItem} key={index} onClick={() => onAnswerCard(index)}>
                     <img style={style.cover} src={movie.cover}/>
                     <p>{movie.title}</p>
                   </li>

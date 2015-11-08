@@ -17,4 +17,14 @@
       display: none;
     }
   }
+
+  &.showing-answer {
+    li {
+      background-color: red;
+
+      &.correct-answer {
+        background-color: green;
+      }
+    }
+  }
 }
