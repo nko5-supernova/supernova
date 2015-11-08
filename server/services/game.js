@@ -64,6 +64,21 @@ export async function answer(id, data) {
 }
 
 
-export function find() {
-  return Game.find().exec();
+export async function leaderboard() {
+  const data = await Game.aggregate([
+    {
+      $match: { status: 'finished' }
+    },
+    {
+      $group: {
+        _id: '$username',
+        points: { $sum: '$points' }
+      }
+    },
+    {
+      $sort: { points: -1 }
+    }
+  ]).exec();
+
+  return data.map(item => ({ username: item._id, points: item.points }));
 }

@@ -8,3 +8,10 @@ export function detail(data) {
 
   return result;
 }
+
+
+export function leaderboard(data) {
+  return {
+    list: data
+  };
+}

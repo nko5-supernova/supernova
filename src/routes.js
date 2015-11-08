@@ -7,7 +7,8 @@ import * as containers from './containers';
 const {
   HomePage,
   GamePage,
-  GameOverPage
+  GameOverPage,
+  LeaderboardPage
 } = containers;
 
 
@@ -16,5 +17,6 @@ export default (
     <Route path="/" component={HomePage} />
     <Route path="/game" component={GamePage} />
     <Route path="/game/over" component={GameOverPage} />
+    <Route path="/leaderboard" component={LeaderboardPage} />
   </Route>
 );

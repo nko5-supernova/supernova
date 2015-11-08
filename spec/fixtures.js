@@ -1,8 +1,11 @@
+import {Game} from '../server/models';
 
-export function fixtureGame() {
-  return {
+
+export function fixtureGame(data) {
+  const defaultData = {
     points: 0,
-    createdAt: new Date(),
+    createdAt: new Date(2015, 10, 1, 15, 2, 10),
+    finishedAt: new Date(2015, 10, 1, 15, 2, 20),
     username: 'maxcnunes',
     questions: [
       {
@@ -57,4 +60,21 @@ export function fixtureGame() {
       }
     ]
   };
+
+  return {
+    ...defaultData,
+    ...data
+  };
+}
+
+
+export async function createGame(data) {
+  const _data = fixtureGame(data);
+  const game = await Game.create(_data);
+
+  await Game.update(
+    { _id: game.id },
+    { $set: { ..._data } },
+    { multi: true }
+  ).exec();
 }
