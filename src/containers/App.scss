@@ -9,7 +9,7 @@ body {
 
 .app {
 	text-align: center;
-	
+
 	h1, h2, h3, h4, h5 {
 		color: #8EC9D2;
 		font: 'Alfa Slab One', cursive, sans-serif;
@@ -19,7 +19,7 @@ body {
 
 	h1 { font-size: 3em; }
 	h2 { font-size: 2em; }
-	
+
 	a {
 		color: #fff;
 		text-decoration: none;
@@ -32,12 +32,13 @@ body {
 		font: 15px/30px 'Gentium Book Basic', serif;
 		color: #e7e7e7;
 		display: inline-block;
+		width: 100%;
 	}
-	
+
 	input, button {
 		color: #636363;
 	}
-	
+
 	input[type="text"] {
 	  padding: 10px;
 	  border: none;
@@ -56,11 +57,11 @@ body {
 	input[type="text"].focus {
 	  border-bottom: solid 2px #969696;
 	}
-	
+
 	.top-navbar {
 		margin: 1em 0;
 	}
-	
+
 	.message {
 		margin: 1em 0;
 	}

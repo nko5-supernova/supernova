@@ -50,7 +50,7 @@ class GameOverPage extends Component {
         </div>
 
 
-        <div>
+        <div className="footer">
           <a href="#" onClick={::this.onClickBackToHome}>Back to home</a>
           <span style={{margin: '0 1em'}}>|</span>
           <a href="#" onClick={::this.onClickLeaderboard}>Leaderboard</a>
