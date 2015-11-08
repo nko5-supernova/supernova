@@ -59,7 +59,7 @@ export async function answer(id, data) {
   const currentQuestion = game.questions[currentQuestionIndex];
 
   if (data.answer === currentQuestion.correctAnswer) {
-    game.points += 10;
+    game.points += ((data.fraction || 0) * 10);
   }
 
   if (currentQuestionIndex === game.questions.length - 1) {
