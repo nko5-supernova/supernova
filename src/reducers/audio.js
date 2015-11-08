@@ -37,6 +37,8 @@ export default function audio(state = INITIAL_STATE, action) {
     return {...state, isMuted: true};
   case UNMUTE:
     return {...state, isMuted: false};
+  case FINISHED_AUDIO:
+    return {...state, isFinished: true};
   default:
     return state;
   }

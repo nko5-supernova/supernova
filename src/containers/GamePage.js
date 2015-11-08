@@ -42,7 +42,7 @@ class GamePage extends Component {
       setTimeout(() => this.props.gameActions.nextCard(), 2000);
     }
 
-    if (nextProps.isFinished) {
+    if (nextProps.audio.isFinished) {
       this.props.gameActions.nextCard();
     }
   }

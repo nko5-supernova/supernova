@@ -25,9 +25,24 @@ class GameOverPage extends Component {
   }
 
   render() {
+    const { game } = this.props;
+
+    console.log(game);
+
     return (
       <div>
         <h1>Gameover</h1>
+        <div className="songs-container">
+        {
+            game.questions.map(game => {
+              console.log(game);
+            }
+
+            )
+        }
+        </div>
+
+
         <button onClick={::this.onClickBackToHome}>Back to home</button>
       </div>
     );
