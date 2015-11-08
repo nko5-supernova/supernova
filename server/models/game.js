@@ -21,7 +21,6 @@ const schema = mongoose.Schema({
 schema.pre('save', function(next) {
   if (this.isNew) {
     this.createdAt = new Date();
-    this.points = 0;
   }
   next();
 });
