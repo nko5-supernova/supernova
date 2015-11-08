@@ -41,6 +41,10 @@ class GamePage extends Component {
     if (this.props.game.correctAnswer === -1 && nextProps.game.correctAnswer !== -1) {
       setTimeout(() => this.props.gameActions.nextCard(), 2000);
     }
+
+    if (nextProps.isFinished) {
+      this.props.gameActions.nextCard();
+    }
   }
 
   onClickLeaveGame() {
@@ -48,10 +52,12 @@ class GamePage extends Component {
   }
 
   onAnswerCard(answer) {
-    const { game } = this.props;
+    const { game, audio } = this.props;
 
     if (game.correctAnswer === -1) {
-      this.props.gameActions.answerCard(answer);
+      const fraction = 1 - (audio.currentTime / audio.duration);
+
+      this.props.gameActions.answerCard(answer, fraction);
     }
   }
 

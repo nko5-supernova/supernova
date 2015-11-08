@@ -29,7 +29,7 @@ export function startGame(username) {
 }
 
 
-export function answerCard(answer) {
+export function answerCard(answer, fraction) {
   return async (dispatch, getState) => {
     try {
       const gameId = getState().game._id;
@@ -37,7 +37,7 @@ export function answerCard(answer) {
       const result = await axios({
         url: `/api/game/${gameId}/answer`,
         method: 'POST',
-        data: { answer }
+        data: { answer, fraction }
       });
       dispatch({ type: ANSWER_CARD_SUCCESS, ...result.data });
     } catch (error) {

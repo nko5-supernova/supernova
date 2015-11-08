@@ -1,4 +1,4 @@
-import { LOAD_AUDIO, AUDIO_READY, PLAY, PAUSE, RESUME, SET_CURRENT_TIME, MUTE, UNMUTE } from '../actions/audio';
+import { LOAD_AUDIO, AUDIO_READY, PLAY, PAUSE, RESUME, SET_CURRENT_TIME, MUTE, UNMUTE, FINISHED_AUDIO } from '../actions/audio';
 import { ANSWER_CARD_REQUEST, NEXT_CARD } from '../actions/game';
 
 const INITIAL_STATE = {
@@ -9,7 +9,8 @@ const INITIAL_STATE = {
   isPaused: false,
   isMuted: false,
   duration: 0,
-  currentTime: 0
+  currentTime: 0,
+  isFinished: false
 };
 
 export default function audio(state = INITIAL_STATE, action) {

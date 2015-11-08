@@ -2,6 +2,8 @@ import { START_GAME_SUCCESS,
   ANSWER_CARD_SUCCESS, ANSWER_CARD_REQUEST,
   NEXT_CARD } from '../actions/game';
 
+// import { FINISHED_AUDIO } from '../actions/audio';
+
 const INITIAL_STATE = {};
 
 export default function counter(state = INITIAL_STATE, action) {
@@ -17,7 +19,6 @@ export default function counter(state = INITIAL_STATE, action) {
   case ANSWER_CARD_REQUEST:
     return {...state, checkingAnswer: true};
   case ANSWER_CARD_SUCCESS:
-    console.log(action);
     return {...state, checkingAnswer: false, correctAnswer: action.correctAnswer};
   case NEXT_CARD:
     if (state.currentMatch === state.questions.length - 1) {
