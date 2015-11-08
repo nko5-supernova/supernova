@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getRandomItems } from '../utils';
 
 
 const COVER_SIZE = 'w185';
@@ -34,13 +35,7 @@ export default class TheMovieDBClient {
     });
 
     const similarMovies = result.data.results;
-    const randomMovies = [];
-    for (let idx = 0; idx < amountItems; idx++) {
-      randomMovies.push(
-        similarMovies[Math.floor(Math.random() * similarMovies.length)]
-      );
-    }
-
+    const randomMovies = getRandomItems(similarMovies, amountItems);
     const theMovieDBConfig = await this.getConfig();
 
     return randomMovies.map(movie => ({

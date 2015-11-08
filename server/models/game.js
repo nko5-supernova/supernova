@@ -6,6 +6,7 @@ const schema = mongoose.Schema({
   finishedAt: { type: Date },
   username: { type: String, required: true },
   points: { type: Number },
+  status: { type: String, enum: ['playing', 'finished'] },
   questions: [{
     soundtrack: { type: String, required: true },
     answered: { type: Number },
@@ -22,6 +23,7 @@ schema.pre('save', function(next) {
   if (this.isNew) {
     this.createdAt = new Date();
     this.points = 0;
+    this.status = 'playing';
   }
   next();
 });

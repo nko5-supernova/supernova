@@ -1,7 +1,7 @@
 import {Movie} from '../../server/models';
 
 
-const GAMES = [
+const MOVIES = [
   { imdbId: 'tt0241527', soundtrack: 'https://soundcloud.com/tfrady/harry-potter-soundtrack-hedwigs-theme' },
   { imdbId: 'tt0068646', soundtrack: 'https://soundcloud.com/alexpfeffer/the-godfather-love-theme-feat' },
   { imdbId: 'tt3472226', soundtrack: 'https://soundcloud.com/championdnb/true-survivor-champion' },
@@ -28,7 +28,7 @@ const GAMES = [
   Execute movie seed data
  */
 (async function () {
-  return Promise.all(GAMES.map(async movieSeed => {
+  return Promise.all(MOVIES.map(async movieSeed => {
     const movie = await Movie.findOne({ imdbId: movieSeed.imdbId }).exec();
     console.info(`${movie ? 'updating' : 'creating'} movie ${movieSeed.imdbId}`);
     if (!movie) {

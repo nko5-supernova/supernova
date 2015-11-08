@@ -1,6 +1,7 @@
 import { shuffle } from 'lodash';
 import { Game, Movie } from '../models';
 import { theMovieDBClient } from '../clients';
+import { getRandomItems } from '../utils';
 
 
 const AMOUNT_QUESTIONS_PER_GAME = 5;
@@ -63,15 +64,21 @@ export async function answer(id, data) {
 }
 
 
-export function find() {
-  return Game.find().exec();
-}
+export async function leaderboard() {
+  const data = await Game.aggregate([
+    {
+      $match: { status: 'finished' }
+    },
+    {
+      $group: {
+        _id: '$username',
+        points: { $sum: '$points' }
+      }
+    },
+    {
+      $sort: { points: -1 }
+    }
+  ]).exec();
 
-
-function getRandomItems(items, amount) {
-  const result = [];
-  for (let idx = 0; idx < amount; idx++) {
-    result.push(items[Math.floor(Math.random() * items.length)]);
-  }
-  return result;
+  return data.map(item => ({ username: item._id, points: item.points }));
 }
