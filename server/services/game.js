@@ -51,13 +51,22 @@ export async function answer(id, data) {
     return null;
   }
 
-  const index = game.questions.findIndex(qst => typeof qst.answered === 'undefined');
-  const currentQuestion = game.questions[index];
+  if (game.status !== 'playing') {
+    return null;
+  }
+
+  const currentQuestionIndex = game.questions.findIndex(qst => typeof qst.answered === 'undefined');
+  const currentQuestion = game.questions[currentQuestionIndex];
 
   if (data.answer === currentQuestion.correctAnswer) {
     game.points += 10;
   }
 
+  if (currentQuestionIndex === game.questions.length - 1) {
+    game.status = 'finished';
+  }
+
+  currentQuestion.answered = data.answer;
   await game.save();
 
   return { correctAnswer: currentQuestion.correctAnswer };
