@@ -14,6 +14,13 @@ if (config.environment === 'development' || config.environment === 'test') {
 }
 
 
-export default mongoose.connect(
-  `mongodb://${config.mongodb.host}:${config.mongodb.port}/${config.mongodb.database}`
-);
+let auth = '';
+if (config.mongodb.user && config.mongodb.pass) {
+  auth = `${config.mongodb.user}:${config.mongodb.pass}@`;
+}
+
+
+const mongoURI = `mongodb://${auth}${config.mongodb.host}:${config.mongodb.port}/${config.mongodb.database}`;
+
+
+export default mongoose.connect(mongoURI);
