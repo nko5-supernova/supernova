@@ -56,6 +56,11 @@ class GamePage extends Component {
   }
 
   handleGameEvents(props) {
+    if (!props.game.status) {
+      this.context.history.pushState(null, '/');
+      return;
+    }
+
     if (props.game.status === 'finished') {
       this.context.history.pushState(null, '/game/over');
     }
