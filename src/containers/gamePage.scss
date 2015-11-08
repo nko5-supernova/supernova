@@ -5,7 +5,7 @@
 
     .loading-modal {
       display: none;
-      position: absolute;
+      position: fixed;
       background-color: rgba(0,0,0,0.75);
       top: 0;
       bottom: 0;
@@ -25,7 +25,7 @@
       display: block;
     }
   }
-	
+
 	.leave {
 		text-align: center;
 		margin: 2em 0;
