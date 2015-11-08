@@ -11,9 +11,6 @@ import * as AudioActions from '../actions/audio';
 const style = {
   cardContainer: {
     overflow: 'auto'
-  },
-  leave: {
-    display: 'block'
   }
 };
 
@@ -47,7 +44,8 @@ class GamePage extends Component {
     }
   }
 
-  onClickLeaveGame() {
+  onClickLeaveGame(event) {
+    event.preventDefault();
     this.context.history.pushState(null, '/');
   }
 
@@ -101,7 +99,9 @@ class GamePage extends Component {
             </div>
         </div>
       }
-      <button style={style.leave} onClick={::this.onClickLeaveGame}>Leave</button>
+      <div className="leave">
+        <a href="#" style={style.leave} onClick={::this.onClickLeaveGame}>Leave</a>
+      </div>
     </div>
     );
   }

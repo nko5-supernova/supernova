@@ -1,0 +1,35 @@
+.leaderboard {
+	table {
+		width: 100%;
+		margin: 1em 0 2em 0;
+		
+		thead {
+			background: #8EC9D2;
+			color: #000;
+			
+			th {
+				padding: 0.5em 0;
+				text-transform: uppercase;
+			}
+		}
+		
+		tbody {
+			td {
+				padding: 0.5em 0;
+			}
+			
+			td:first-child {
+				padding-left: 1em;
+			}
+			
+			td:last-child {
+				text-align: center;
+			}
+			
+			tr:nth-child(even) {
+				background-color: #ededed;
+				color: #2E334A;
+			}
+		}
+	}
+}

@@ -3,9 +3,34 @@
   .content-wrappper {
     display: block;
   }
+	
+	h2 {
+		margin-bottom: 0.5em;
+	}
+	
+	.score-percentage {
+		color: #cc992c;
+		margin: 0;
+		font-size: 1.5em;
+	}
+	
+	.sound-player button {
+		margin: 2.5em 0;
+	}
+	
+	img {
+		background-color: #FFF;
+		padding: 2px;
+		outline: 1px solid #B7B8BF;
+	}
 
   .loading-wrapper {
     display: none;
+    p {
+      color: #fff;
+      text-align: center;
+      margin-top: 12em;
+    }
   }
 
   &.loading {
@@ -20,10 +45,12 @@
 
   &.showing-answer {
     li {
-      background-color: red;
+			p { color: red; }
+			img { background-color: red; }
 
       &.correct-answer {
-        background-color: green;
+				p { color: green; }
+				img { background-color: green; }
       }
     }
   }

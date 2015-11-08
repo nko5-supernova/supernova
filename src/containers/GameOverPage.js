@@ -16,8 +16,14 @@ class GameOverPage extends Component {
     history: PropTypes.object.isRequired,
   };
 
-  onClickBackToHome() {
+  onClickBackToHome(event) {
+    event.preventDefault();
     this.context.history.pushState(null, '/');
+  }
+
+  onClickLeaderboard(event) {
+    event.preventDefault();
+    this.context.history.pushState(null, '/leaderboard');
   }
 
   onAnswerCard(answer) {
@@ -44,7 +50,11 @@ class GameOverPage extends Component {
         </div>
 
 
-        <button onClick={::this.onClickBackToHome}>Back to home</button>
+        <div>
+          <a href="#" onClick={::this.onClickBackToHome}>Back to home</a>
+          <span style={{margin: '0 1em'}}>|</span>
+          <a href="#" onClick={::this.onClickLeaderboard}>Leaderboard</a>
+        </div>
       </div>
     );
   }

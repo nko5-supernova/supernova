@@ -56,7 +56,7 @@ export default class Card extends Component {
 
     return (
       <div className={classNames(classes)}>
-        <h3>Match {match + 1}</h3>
+        <h2>Turn {match + 1}</h2>
         <div className="loading-wrapper">
           <p>Loading Movies...</p>
         </div>

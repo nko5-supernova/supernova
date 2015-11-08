@@ -84,7 +84,7 @@ export default class SoundPlayer extends Component {
     const { isLoaded, isMuted } = this.props.audio;
 
     return (
-      <div style={style.play}>
+      <div className="sound-player" style={style.play}>
         <button disabled={!isLoaded } onClick={::this.onToggleMute}>
           {isMuted ? 'Unmute' : 'Mute'}
         </button>

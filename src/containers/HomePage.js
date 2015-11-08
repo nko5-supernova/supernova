@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import * as GameActions from '../actions/game';
 
 
+require('./HomePage.scss');
+
+
 class HomePage extends Component {
   static propTypes = {
     game: PropTypes.object.isRequired,
@@ -30,7 +33,8 @@ class HomePage extends Component {
     this.props.gameActions.startGame(username);
   }
 
-  onClickLeaderboard() {
+  onClickLeaderboard(event) {
+    event.preventDefault();
     this.context.history.pushState(null, '/leaderboard');
   }
 
@@ -38,25 +42,29 @@ class HomePage extends Component {
     const state = this.state || {};
     let errorMessage = null;
     if (state.error) {
-      errorMessage = <div>{state.error}</div>;
+      errorMessage = <div className="message">{state.error}</div>;
     }
 
     let startMessage = null;
     const isStartingGame = this.props.game.status === 'starting';
     if (isStartingGame) {
-      startMessage = <div>Starting the game, please wait a bit.</div>;
+      startMessage = <div className="message">Starting the game, please wait a bit.</div>;
     }
 
     return (
-      <div>
+      <div className="main">
         <div>
           <h1>Guess the movie</h1>
           <p>Prove you know the soundtrack of any movie. I dare you!</p>
+          <div className="top-navbar">
+            <a href="#" onClick={::this.onClickLeaderboard} disabled={isStartingGame}>Leaderboard</a>
+          </div>
+          <div className="start-game">
+            <input type="text" placeholder="username" ref="username" />
+            <button onClick={::this.onClickStartGame} disabled={isStartingGame}>Start</button>
+          </div>
           { errorMessage }
           { startMessage }
-          <input type="text" placeholder="username" ref="username" />
-          <button onClick={::this.onClickStartGame} disabled={isStartingGame}>Start</button>
-          <button onClick={::this.onClickLeaderboard} disabled={isStartingGame}>Leaderboard</button>
         </div>
       </div>
     );

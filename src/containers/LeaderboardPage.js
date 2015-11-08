@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import * as LeaderboardActions from '../actions/leaderboard';
 
 
+require('./LeaderboardPage.scss');
+
+
 class LeaderboardPage extends Component {
   static propTypes = {
     leaderboard: PropTypes.object.isRequired,
@@ -19,7 +22,8 @@ class LeaderboardPage extends Component {
     this.props.loadLeaderboard();
   }
 
-  onClickBackToHome() {
+  onClickBackToHome(event) {
+    event.preventDefault();
     this.context.history.pushState(null, '/');
   }
 
@@ -31,24 +35,26 @@ class LeaderboardPage extends Component {
     }
 
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Points</th>
-          </tr>
-        </thead>
-        <tbody>
-        {
-          items.map(rank => (
-            <tr key={rank.username}>
-              <td>{rank.username}</td>
-              <td>{rank.points}</td>
+      <div className="leaderboard">
+        <table>
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Points</th>
             </tr>
-          ))
-        }
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+          {
+            items.map(rank => (
+              <tr key={rank.username}>
+                <td>{rank.username}</td>
+                <td>{rank.points}</td>
+              </tr>
+            ))
+          }
+          </tbody>
+        </table>
+      </div>
     );
   }
 
@@ -58,7 +64,7 @@ class LeaderboardPage extends Component {
       <div>
         <h1>Leaderboard</h1>
         {this.renderLeaderboardResult(leaderboard.items)}
-        <button onClick={::this.onClickBackToHome}>Back to home</button>
+        <a href="#" onClick={::this.onClickBackToHome}>Back to home</a>
       </div>
     );
   }

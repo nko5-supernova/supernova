@@ -10,7 +10,7 @@ export default class Score extends Component {
     const { maxPoints, fraction } = this.props;
 
     return (
-      <p>{fraction.toFixed(2)} x {maxPoints} points</p>
+      <p className="score-percentage">{fraction.toFixed(2)} x {maxPoints} points</p>
     );
   }
 }
