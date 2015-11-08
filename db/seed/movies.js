@@ -45,7 +45,8 @@ const MOVIES = [
   { imdbId: 'tt0078346', soundtrack: 'https://soundcloud.com/vituccio-1/superman-theme' },
   { imdbId: 'tt0088763', soundtrack: 'https://soundcloud.com/bstrgg/back-to-the-future-theme-song' },
   { imdbId: 'tt0073195', soundtrack: 'https://soundcloud.com/aamandacarp/jaws-theme-song' },
-  { imdbId: 'tt0083866', soundtrack: 'https://soundcloud.com/boston-pops/flying-theme' }
+  { imdbId: 'tt0083866', soundtrack: 'https://soundcloud.com/boston-pops/flying-theme' },
+  { imdbId: 'tt1853728', soundtrack: 'https://soundcloud.com/unchained-soundtrack/unchained-the-payback' }
 ];
 
 /*
