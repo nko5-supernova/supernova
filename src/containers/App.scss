@@ -70,21 +70,21 @@ body {
 	.content-app {
 		padding-bottom: 55px;
 	}
-	
+
 	footer {
 		position: absolute;
-    bottom: 0;
+    bottom: 1em;
     width: 100%;
 		padding: 25 0 0 0.5em;
-		
+
 		img, iframe {
 			vertical-align: middle;
 		}
-		
+
 		.thanks {
 			margin-top: 1em;
 			img { margin: 0 1em; }
-			
+
 			.themoviedb { max-height: 20px; }
 		}
 	}
