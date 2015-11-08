@@ -8,6 +8,8 @@ const schema = mongoose.Schema({
   points: { type: Number },
   questions: [{
     soundtrack: { type: String, required: true },
+    answered: { type: Number },
+    answeredCorrect: { type: Number },
     options: [{
       movie: { type: String, required: true },
       isCorrect: { type: Boolean, required: true }

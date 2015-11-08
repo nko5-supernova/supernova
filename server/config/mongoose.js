@@ -1,14 +1,15 @@
-import config from './config';
 import mongoose from 'mongoose';
+import config from './config';
+import debug from './debug';
 
 
 if (config.environment === 'development' || config.environment === 'test') {
   mongoose.set('debug', function(collectionName, method, query, doc, options) {
-    console.log('mongoose: %s', method);
-    if (collectionName) console.log('\tcollection:', collectionName);
-    if (query) console.log('\tquery:', JSON.stringify(query));
-    if (doc) console.log('\tdoc:', JSON.stringify(doc));
-    if (options) console.log('\toptions:', options);
+    debug('mongoose: %s', method);
+    if (collectionName) debug('\tcollection:', collectionName);
+    if (query) debug('\tquery:', JSON.stringify(query));
+    if (doc) debug('\tdoc:', JSON.stringify(doc));
+    if (options) debug('\toptions:', options);
   });
 }
 

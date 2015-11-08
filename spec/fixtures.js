@@ -1,12 +1,6 @@
-import { Game } from '../models';
 
-
-export async function create(data) {
-  const game = {
-    ...data,
-    //
-    // TODO: create random questions and options
-    //
+export function fixtureGame(data) {
+  return {
     questions: [
       {
         soundtrack: 'https://soundcloud.com/tfrady/harry-potter-soundtrack-hedwigs-theme',
@@ -44,33 +38,7 @@ export async function create(data) {
           { movie: 'tt0398286', isCorrect: false }
         ]
       },
-    ]
+    ],
+    ...data
   };
-
-  return Game.create(game);
-}
-
-
-export async function answer(id, data) {
-  const game = await Game.findById(id).exec();
-  if (!game) {
-    return null;
-  }
-
-  const currentQuestion = game.questions
-    .findIndex(qst => typeof qst.answered === 'undefined');
-
-  const correctAnswer = game.questions[currentQuestion].options
-    .findIndex(opt => opt.isCorrect);
-
-  if (data.answer === correctAnswer) {
-    game.points += 10;
-  }
-
-  await game.save();
-}
-
-
-export function find() {
-  return Game.find().exec();
 }
