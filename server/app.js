@@ -1,6 +1,7 @@
 import path from 'path';
 import express from 'express';
 import bodyParser from 'body-parser';
+import { environment } from './config/config';
 
 
 const app = express();
@@ -9,7 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 
 
-if (process.env.NODE_ENV === 'development') {
+if (environment === 'development') {
   const webpack = require('webpack');
   const config = require('../webpack.config');
   const compiler = webpack(config);
