@@ -21,7 +21,7 @@ describe('game-answer', function() {
           request(app)
             .post(`/api/game/${currentGame._id}/answer`)
             .expect(200)
-            .send({ answer: 1 })
+            .send({ answer: 2 })
             .end(done);
         });
 
@@ -37,7 +37,7 @@ describe('game-answer', function() {
           request(app)
             .post(`/api/game/${currentGame._id}/answer`)
             .expect(200)
-            .send({ answer: 2 })
+            .send({ answer: 1 })
             .end(done);
         });
 
@@ -52,11 +52,11 @@ describe('game-answer', function() {
         request(app)
           .post(`/api/game/${currentGame._id}/answer`)
           .expect(200)
-          .send({ answer: 1 })
+          .send({ answer: 2 })
           .end((err, res) => {
             if (err) { return done(err); }
 
-            expect(res.body).to.have.property('correctAnswer', 1);
+            expect(res.body).to.have.property('correctAnswer', 2);
 
             done();
           });

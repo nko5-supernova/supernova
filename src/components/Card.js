@@ -30,26 +30,14 @@ export default class Card extends Component {
     options: PropTypes.array.isRequired,
     soundtrack: PropTypes.string.isRequired,
     onAnswerCard: PropTypes.func.isRequired,
-    loadMovies: PropTypes.func.isRequired,
     audioActions: PropTypes.object.isRequired,
     turnActions: PropTypes.object.isRequired,
     audio: PropTypes.object.isRequired,
     turn: PropTypes.object.isRequired,
-    movies: PropTypes.object.isRequired
   };
 
-  componentDidMount() {
-    this.props.loadMovies(this.props.options.map(option => option.movie));
-  }
-
   componentWillReceiveProps(props) {
-    const {movies, options, turn, turnActions, audio, audioActions} = props;
-
-    const optionsChanged = this.props.options !== options;
-
-    if (optionsChanged || !movies.isLoaded && !movies.isLoading) {
-      this.props.loadMovies(options.map(option => option.movie));
-    }
+    const {turn, turnActions, audio, audioActions} = props;
 
     if (turn.canStart && !turn.didStart) {
       turnActions.startTurn();
@@ -61,7 +49,7 @@ export default class Card extends Component {
   }
 
   render() {
-    const { match, onAnswerCard, soundtrack, audioActions, audio, movies, turn } = this.props;
+    const { match, onAnswerCard, soundtrack, audioActions, audio, turn, options } = this.props;
 
     const classes = {
       'match-container': true,
@@ -78,11 +66,10 @@ export default class Card extends Component {
           <SoundPlayer songURL={soundtrack} audioActions={audioActions} audio={audio}/>
           <ul style={style.list}>
             {
-              movies.movies &&
-              movies.movies.map(( movie, index) =>
+              options.map(( movie, index) =>
                   <li style={style.listItem} key={index} onClick={() => onAnswerCard(index)}>
-                    <img style={style.cover} src={movie.Poster}/>
-                    <p>{movie.Title}</p>
+                    <img style={style.cover} src={movie.cover}/>
+                    <p>{movie.title}</p>
                   </li>
               )
             }

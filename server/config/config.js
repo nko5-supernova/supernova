@@ -12,5 +12,8 @@ export default {
     host: url.parse(process.env.MONGO_PORT).hostname,
     port: url.parse(process.env.MONGO_PORT).port,
     database: process.env.MONGO_DATABASE
-  }
+  },
+
+  theMovieDBAPIURL: 'http://api.themoviedb.org',
+  theMovieDBAPIKey: process.env.THEMOVIEDB_API_KEY
 };
