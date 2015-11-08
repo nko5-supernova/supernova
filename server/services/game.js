@@ -4,7 +4,7 @@ import { theMovieDBClient } from '../clients';
 import { getRandomItems } from '../utils';
 
 
-const AMOUNT_QUESTIONS_PER_GAME = 5;
+const AMOUNT_QUESTIONS_PER_GAME = 10;
 const AMOUNT_OPTIONS_PER_QUESTION = 4;
 
 
