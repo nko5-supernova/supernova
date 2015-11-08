@@ -19,7 +19,7 @@ export function startGame(username) {
       const result = await axios({
         url: `/api/game`,
         method: 'POST',
-        data: { username: 'maxcnunes' }
+        data: { username }
       });
       dispatch({ type: START_GAME_SUCCESS, game: result.data });
     } catch (error) {

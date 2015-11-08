@@ -41,7 +41,7 @@ class LeaderboardPage extends Component {
         <tbody>
         {
           items.map(rank => (
-            <tr>
+            <tr key={rank.username}>
               <td>{rank.username}</td>
               <td>{rank.points}</td>
             </tr>

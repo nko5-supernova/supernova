@@ -1,4 +1,4 @@
-import { LOAD_LEADERBOARD_SUCCESS } from '../actions/game';
+import { LOAD_LEADERBOARD_SUCCESS } from '../actions/leaderboard';
 
 const INITIAL_STATE = {
   items: []

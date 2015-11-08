@@ -1,6 +1,10 @@
-import { START_GAME_SUCCESS,
-  ANSWER_CARD_SUCCESS, ANSWER_CARD_REQUEST,
-  NEXT_CARD } from '../actions/game';
+import {
+  START_GAME_REQUEST,
+  START_GAME_SUCCESS,
+  ANSWER_CARD_SUCCESS,
+  ANSWER_CARD_REQUEST,
+  NEXT_CARD
+} from '../actions/game';
 
 // import { FINISHED_AUDIO } from '../actions/audio';
 
@@ -8,13 +12,18 @@ const INITIAL_STATE = {};
 
 export default function counter(state = INITIAL_STATE, action) {
   switch (action.type) {
+  case START_GAME_REQUEST:
+    return {
+      ...state,
+      status: 'starting'
+    };
   case START_GAME_SUCCESS:
     return {
       ...state,
       ...action.game,
       correctAnswer: -1,
       currentMatch: 0,
-      isOver: false
+      status: 'playing'
     };
   case ANSWER_CARD_REQUEST:
     return {...state, checkingAnswer: true};
@@ -22,7 +31,7 @@ export default function counter(state = INITIAL_STATE, action) {
     return {...state, checkingAnswer: false, correctAnswer: action.correctAnswer};
   case NEXT_CARD:
     if (state.currentMatch === state.questions.length - 1) {
-      return { isOver: true };
+      return { status: 'finished' };
     }
 
     return {...state,

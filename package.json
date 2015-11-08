@@ -7,7 +7,7 @@
   "scripts": {
     "seed": "babel-node db/seed/movies.js",
     "start": "npm run seed && node bin/server.js",
-    "test": "NODE_ENV=test mocha --compilers js:babel/register --recursive --reporter spec ./spec/**/*.spec.js",
+    "test": "NODE_ENV=test mocha --compilers js:babel/register --recursive --timeout 10000 --reporter spec ./spec/**/*.spec.js",
     "test-watch": "npm test -- --watch",
     "build": "npm run clean && NODE_ENV=production webpack src/index.js --config webpack.config.production.js",
     "postinstall": "node scripts/postinstall.js",

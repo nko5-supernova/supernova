@@ -22,6 +22,7 @@ const MOVIES = [
   { imdbId: 'tt0110912', soundtrack: 'https://soundcloud.com/kupukupuku/pulp-fiction-opening-theme' },
   { imdbId: 'tt0097576', soundtrack: 'https://soundcloud.com/ethanmessier/indiana-jones-and-the-raiders' },
   { imdbId: 'tt0080684', soundtrack: 'https://soundcloud.com/christophe-catherine/star-wars-imperial-march-full' }
+  { imdbId: 'tt0061852', soundtrack: 'https://soundcloud.com/nightlife-official/the-bare-necessities' },
 ];
 
 /*

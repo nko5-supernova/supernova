@@ -14,19 +14,19 @@ const loggerMiddleware = createLogger({
 
 let createStoreWithMiddleware;
 
-if (typeof __DEVTOOLS__ !== 'undefined' && __DEVTOOLS__) {
-  const { devTools, persistState } = require('redux-devtools');
+// if (typeof __DEVTOOLS__ !== 'undefined' && __DEVTOOLS__) {
+  // const { devTools, persistState } = require('redux-devtools');
   createStoreWithMiddleware = compose(
     applyMiddleware(thunkMiddleware, promiseMiddleware, loggerMiddleware),
-    devTools(),
-    persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
+    // devTools(),
+    // persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
   )(createStore);
-} else {
-  createStoreWithMiddleware = applyMiddleware(
-    thunkMiddleware,
-    promiseMiddleware
-  )(createStore);
-}
+// } else {
+//   createStoreWithMiddleware = applyMiddleware(
+//     thunkMiddleware,
+//     promiseMiddleware
+//   )(createStore);
+// }
 
 
 /**
