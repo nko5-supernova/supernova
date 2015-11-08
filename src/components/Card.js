@@ -10,14 +10,6 @@ const style = {
     display: 'block',
     width: '100%'
   },
-  listItem: {
-    float: 'left',
-    cursor: 'pointer',
-    width: '20%',
-    padding: '0 1em',
-    boxSizing: 'content-box',
-    textAlign: 'center'
-  },
   cover: {
     maxWidth: '100%',
     maxHeight: '100%'

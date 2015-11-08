@@ -3,21 +3,22 @@
   .content-wrappper {
     display: block;
   }
-	
+
 	h2 {
 		margin-bottom: 0.5em;
 	}
-	
+
 	.score-percentage {
 		color: #cc992c;
 		margin: 0;
 		font-size: 1.5em;
 	}
-	
+
 	.sound-player button {
-		margin: 2.5em 0;
+		margin: 3em 0;
+    width: 6em;
 	}
-	
+
 	img {
 		background-color: #FFF;
 		padding: 2px;
@@ -41,6 +42,25 @@
     .content-wrappper {
       display: none;
     }
+  }
+
+  ul {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 0;
+    max-width: 100em;
+    margin: 2em auto 0 auto;
+  }
+
+  li {
+    float: left;
+    cursor: pointer;
+    width: 25%;
+    padding: 0 3em;
+    box-sizing: border-box;
+    text-align: center;
   }
 
   &.showing-answer {
